@@ -21,14 +21,15 @@ export const Form = () => {
     const [formField, setFormField] = React.useState<FormErr>({brand: false, email: false, model: false, text: false, name: false});
 
 
-    const questionsDispatcher = useDispatch();
 
-    const addQuestion = (question: QuestionObject) =>{
-         questionsDispatcher({type: "ADD_QUESTION", payload: question})
-    }
 
     function clearForm() {
         setForm({brand: "", email: "", model: "", text: "", name: ""})
+    }
+    const questionsDispatcher = useDispatch();
+
+    const addQuestion = (question: QuestionObject) =>{
+        questionsDispatcher({type: "ADD_QUESTION", payload: question})
     }
 
     const submitQuestion = () => {
@@ -36,10 +37,11 @@ export const Form = () => {
         console.log(date)
         QuestionsService.postQuestion(form, date)
             .then((response: any | FetchError) => {
+                console.log(response)
                 const {email, ...y} = form;
-                y['date'] = date
+                y['date'] = date;
                 addQuestion(y)
-                clearForm()
+                clearForm();
         })
     }
 
