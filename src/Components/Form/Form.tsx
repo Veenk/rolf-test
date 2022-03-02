@@ -148,6 +148,9 @@ export const Form = () => {
                 <FormHelperText id="text-helper-text" style={{display: formField.text ? 'block' : 'none' }}>
                     Исключаются спецсимволы, не пустое и не более 500 символов
                 </FormHelperText>
+                <span className={'text-counter' + (form.text.length > 500 ? " color-red" : "")}>
+                    {form.text.length}/500
+                </span>
             </FormControl>
 
             <Button disabled={formErr.name || formErr.model || formErr.brand || formErr.text} variant="contained" type={'submit'} onClick={() => submitQuestion()}>
