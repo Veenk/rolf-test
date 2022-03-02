@@ -1,14 +1,13 @@
 import React, {useEffect} from 'react';
 import {
-    Box,
     Button,
-    FilledInput,
     FormControl,
     FormHelperText,
     Input,
     InputLabel,
     OutlinedInput
 } from "@material-ui/core";
+import dateFormat, { masks } from "dateformat";
 import './form.scss';
 import QuestionsService from '../../Service/QuestionsService';
 import {FetchError, FormErr, FormObject, QuestionObject} from "../../typings";
@@ -34,6 +33,7 @@ export const Form = () => {
 
     const submitQuestion = () => {
         const date = new Date()
+        console.log(date)
         QuestionsService.postQuestion(form, date)
             .then((response: any | FetchError) => {
                 const {email, ...y} = form;

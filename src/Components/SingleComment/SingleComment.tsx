@@ -1,6 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import {Card, Paper, Typography} from "@material-ui/core";
 import './singlecomment.scss'
+import dateFormat, { masks } from "dateformat";
+
+
 export type Question = {
     name: string;
     brand: string;
@@ -24,7 +27,7 @@ export const SingleComment = ({question}: {question: Question}) => {
                 </div>
 
                 <Typography variant="caption" display="block" gutterBottom color={'textSecondary'}>
-                    {question.date.getDate()}
+                    {dateFormat(question.date, "dd-mm-yyyy, h:MM TT")}
                 </Typography>
 
                 <Typography variant="body1" color={"textPrimary"}>
