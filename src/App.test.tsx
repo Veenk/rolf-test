@@ -12,8 +12,6 @@ const render = (component: any) => rtlRender(
     </Provider>
 )
 
-
-
 describe("<Form />", () => {
   test('display check on email field', () => {
     render(<Form />);
