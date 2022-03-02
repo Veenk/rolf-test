@@ -21,29 +21,33 @@ describe("<Form />", () => {
     expect(input).toBeInTheDocument();
 
   })
+
+  test('validation check on name field', () => {
+    render(<Form />);
+
+    const input = screen.getByLabelText("Имя");
+
+    checkInputWithStyles(input, 'Влад', /Только кириллица от 2х до 30 символов/i, `display: none` );
+    checkInputWithStyles(input, 'Vlad', /Только кириллица от 2х до 30 символов/i, `display: block` );
+    checkInputWithStyles(input, 'V'.repeat(31), /Только кириллица от 2х до 30 символов/i, `display: block` );
+    checkInputWithStyles(input, 'V', /Только кириллица от 2х до 30 символов/i, `display: block` );
+  });
   test('validation check on email field', () => {
     render(<Form />);
 
     const input = screen.getByLabelText("Email");
     userEvent.type(input, "test@mail.com");
     expect(input).toHaveValue("test@mail.com");
+    checkInputWithStyles(input, 'test@mail.com', /заполните Email правильно/i, `display: none` );
   });
   test('pass invalid email', () => {
     const res = render(<Form />);
 
     const input = screen.getByLabelText("Email");
-    userEvent.type(input, "test@mailcom");
-    expect(input).toHaveValue("test@mailcom");
-    expect(screen.getByText((/заполните Email правильно/i)).parentNode).toHaveStyle(`display: inline-flex`);
 
-  });
-  test('pass invalid email', () => {
-    const res = render(<Form />);
+    checkInputWithStyles(input, 'test-mail.com', /заполните Email правильно/i, `display: block` )
+    checkInputWithStyles(input, 'test@mailcom', /заполните Email правильно/i, `display: block` )
 
-    const input = screen.getByLabelText("Email");
-    userEvent.type(input, "test-mail.com");
-    expect(input).toHaveValue("test-mail.com");
-    expect(screen.getByText((/заполните Email правильно/i)).parentNode).toHaveStyle(`display: inline-flex`);
   });
   test('pass invalid model', () => {
     render(<Form />);
@@ -89,5 +93,4 @@ const checkInputWithStyles = (element: HTMLElement, value: string, query: RegExp
   expect(element).toHaveValue(value);
   element.blur()
   expect(screen.getByText(query).cloneNode(true)).toHaveStyle(css);
-
 }
