@@ -1,7 +1,21 @@
 .App {
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
-
+.wrapper {
+  display: flex;
+  width: 90%;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.question_section {
+  width: 100%;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;

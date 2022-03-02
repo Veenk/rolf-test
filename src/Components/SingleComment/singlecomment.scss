@@ -1,0 +1,17 @@
+.single-comment{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 2rem;
+  box-sizing: border-box;
+  margin-bottom: 1.2rem;
+}
+.comment-header{
+  display: flex;
+  flex-direction: row;
+}
+
+.question-car{
+    margin-left: 2rem !important
+}

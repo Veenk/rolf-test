@@ -1,0 +1,25 @@
+.form{
+  padding: 1rem;
+  margin-bottom: .5rem;
+  &__title{
+    font: inherit;
+    color: black;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    align-self: flex-start;
+  }
+  &__wrapper{
+    display: flex;
+    flex-direction: column;
+    width: 30rem;
+    padding: 3rem;
+    border: 1px solid rgba(grey, .3);
+    border-radius: 1rem;
+    .MuiFormControl-root{
+      //padding: 0.2rem;
+      margin-bottom: .5rem;
+    }
+  }
+
+}
+

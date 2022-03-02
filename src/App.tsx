@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useEffect} from 'react';
 import './App.css';
+import {SingleComment} from "./Components/SingleComment/SingleComment";
+import {Form} from "./Components/Form/Form";
+import {useDispatch, useSelector} from "react-redux";
+import {RootState} from "./store/questionReducer";
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    const questions = useSelector((state: RootState) => state.questions);
+
+    return (
+        <div className="App">
+            <div className="wrapper">
+                <div className="question_section">
+                    {questions && questions.map((question: any) =>(
+                        <SingleComment question={question} />
+                    ))}
+                </div>
+
+                <Form></Form>
+            </div>
+
+        </div>
+    );
 }
 
 export default App;
