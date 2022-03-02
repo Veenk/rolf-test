@@ -11,10 +11,17 @@
   &__wrapper{
     display: flex;
     flex-direction: column;
-    width: 30rem;
+    background: white;
+    max-width: 40rem;
+    width: 40rem;
     padding: 3rem;
     border: 1px solid rgba(grey, .3);
     border-radius: 1rem;
+    box-sizing: border-box;
+    @media (max-width: 800px) {
+      width: 100%;
+      padding: 1rem;
+    }
     .MuiFormControl-root{
       //padding: 0.2rem;
       margin-bottom: .5rem;

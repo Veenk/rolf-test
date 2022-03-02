@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import './App.css';
+import './App.scss';
 import {SingleComment} from "./Components/SingleComment/SingleComment";
 import {Form} from "./Components/Form/Form";
 import {useDispatch, useSelector} from "react-redux";
