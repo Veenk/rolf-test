@@ -93,13 +93,13 @@ export const Form = () => {
                     aria-describedby='model-helper-text'
                 />
                 <FormHelperText id="model-helper-text" style={{display: formField.model ? 'block' : 'none' }}>
-                    Только латинские буквы и цифры от 4х до 20 символо
+                    Только латинские буквы и цифры от 4х до 20 символов
                 </FormHelperText>
             </FormControl>
             <FormControl error={formField.brand} variant="standard">
-                <InputLabel htmlFor="component-disabled">Марка</InputLabel>
+                <InputLabel htmlFor="brand-input">Марка</InputLabel>
                 <Input
-                    id="component-disabled"
+                    id="brand-input"
                     value={form.brand}
                     onChange={(e) => formSetter('brand', e.currentTarget.value)}
                     onBlur={(e) => {
@@ -114,9 +114,9 @@ export const Form = () => {
                 </FormHelperText>
             </FormControl>
             <FormControl error={formField.email} variant="standard">
-                <InputLabel htmlFor="component-error">Email</InputLabel>
+                <InputLabel htmlFor="email-input">Email</InputLabel>
                 <Input
-                    id="component-error"
+                    id="email-input"
                     value={form.email}
                     onChange={(e) => formSetter('email', e.currentTarget.value)}
                     onBlur={(e) => {
